@@ -361,6 +361,7 @@ a { color: var(--color-link, var(--color-primary)); }</style>
     --color-text-muted: #94a3b8;
     --color-border-light: #e2e8f0;
     --color-border: #cbd5e1;
+    --color-accent: #3b82f6;
     --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --font-mono: 'SF Mono', 'Fira Code', monospace;
   }
@@ -413,7 +414,7 @@ a { color: var(--color-link, var(--color-primary)); }</style>
     margin-bottom: 24px; padding-bottom: 10px;
     border-bottom: 2px solid var(--color-border-light);
   }
-  .section-header i { color: #3b82f6; font-size: 18px; }
+  .section-header i { color: var(--color-accent); font-size: 18px; }
   .section-header h2 { font-size: 20px; font-weight: 700; color: var(--color-text); letter-spacing: -0.3px; }
   .timeline { display: flex; flex-direction: column; gap: 20px; }
   .tcard {
@@ -426,13 +427,34 @@ a { color: var(--color-link, var(--color-primary)); }</style>
   .tcard:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); border-color: var(--color-border); }
   .tcard-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; margin-bottom: 6px; }
   .tcard h3 { font-size: 16px; font-weight: 600; color: var(--color-text); }
-  .tcard .role { font-size: 14px; color: #3b82f6; font-weight: 500; margin-bottom: 4px; }
+  .tcard .role { font-size: 14px; color: var(--color-accent); font-weight: 500; margin-bottom: 4px; }
   .tcard .dates {
     font-size: 12px; color: var(--color-text-muted); font-family: var(--font-mono);
     background: rgba(0,0,0,0.04); padding: 3px 10px; border-radius: 100px; white-space: nowrap;
   }
   .tcard ul { margin-top: 10px; padding-left: 18px; }
   .tcard li { font-size: 14px; color: var(--color-text-secondary); margin-bottom: 6px; line-height: 1.55; }
+  .skills-section { padding: 24px 0 32px; }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
+  .skill-card {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border-light);
+    border-radius: 10px;
+    padding: 18px 20px;
+    transition: box-shadow 0.2s;
+  }
+  .skill-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+  .skill-card h4 { font-size: 13px; font-weight: 600; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .skill-tag {
+    font-size: 13px; color: var(--color-text-secondary); background: #fff;
+    border: 1px solid var(--color-border-light); border-radius: 100px;
+    padding: 4px 12px; white-space: nowrap;
+  }
+  .skill-tag.highlight {
+    background: linear-gradient(135deg, #3b82f6, #10b981);
+    color: #fff; border-color: transparent; font-weight: 500;
+  }
   .edu-card {
     background: var(--color-bg-secondary);
     border: 1px solid var(--color-border-light);
@@ -442,6 +464,7 @@ a { color: var(--color-link, var(--color-primary)); }</style>
   }
   .edu-card h3 { font-size: 16px; font-weight: 600; }
   .edu-card .major { font-size: 14px; color: var(--color-text-secondary); }
+  .edu-card .honors { font-size: 13px; color: var(--color-accent); font-weight: 500; margin-top: 2px; }
   .awards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
   .award {
     background: var(--color-bg-secondary);
@@ -462,7 +485,7 @@ a { color: var(--color-link, var(--color-primary)); }</style>
   }
   .involve-card + .involve-card { margin-top: 14px; }
   .involve-card h3 { font-size: 15px; font-weight: 600; }
-  .involve-card .role-small { font-size: 13px; color: #3b82f6; font-weight: 500; }
+  .involve-card .role-small { font-size: 13px; color: var(--color-accent); font-weight: 500; }
   .involve-card .dates-small { font-size: 12px; color: var(--color-text-muted); font-family: var(--font-mono); margin-bottom: 6px; }
   .involve-card li { font-size: 13px; color: var(--color-text-secondary); margin-bottom: 4px; line-height: 1.5; }
   .footer {
@@ -471,7 +494,7 @@ a { color: var(--color-link, var(--color-primary)); }</style>
     border-top: 1px solid var(--color-border-light);
     margin-top: 16px;
   }
-  .footer a { color: #3b82f6; text-decoration: none; }
+  .footer a { color: var(--color-accent); text-decoration: none; }
 
   @media (max-width: 600px) {
     .hero { padding: 48px 20px 40px; }
@@ -479,6 +502,7 @@ a { color: var(--color-link, var(--color-primary)); }</style>
     .tcard-top { flex-direction: column; }
     .edu-card { flex-direction: column; align-items: flex-start; }
     .awards-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -488,7 +512,7 @@ a { color: var(--color-link, var(--color-primary)); }</style>
   <div class="hero-content">
     <div class="hero-initials">RI</div>
     <h1>Ryan Ingstad</h1>
-    <div class="subtitle">Supply Chain &amp; Logistics Professional</div>
+    <div class="subtitle">Supply Chain &amp; Logistics Professional &nbsp;·&nbsp; Lean Six Sigma Green Belt</div>
     <div class="hero-links">
       <a href="mailto:ingstadr@gmail.com"><i class="fa-solid fa-envelope"></i> ingstadr@gmail.com</a>
       <a href="tel:9525673501"><i class="fa-solid fa-phone"></i> (952) 567-3501</a>
@@ -500,68 +524,113 @@ a { color: var(--color-link, var(--color-primary)); }</style>
 <div class="container">
 
 <div class="bio">
-  <p>Results-driven Supply Chain Professional with a B.S. in Supply Chain Management from Iowa State University and hands-on expertise applying Lean principles to optimize high-volume distribution and logistics operations. Currently serving as the dedicated point of contact for Amazon's Dedicated Train pilot program, coordinating all container moves to and from the rail with full trains of 250 AZNU shipping containers daily. Previously contributed to a 7-person pilot team that eliminated bobtails on the road, saving over $1 million annually, and went on to resolve LTL scheduling backlogs and grow key external accounts including Best Buy, JC Penney, and Bridgestone. Proven track record leading 50+ associates at Amazon's DTP7 delivery station, breaking operational records, and earning honors including Amazon Leader of the Month, RA of the Year, and Iowa State's prestigious Bronze Pin Award.</p>
+  <p>Lean Six Sigma Green Belt and Supply Chain Professional with progressive Amazon experience across warehouse operations, intermodal logistics, and dedicated carrier programs. Currently managing $3.75M+ in annual freight as the sole specialist for Amazon's Dedicated Train pilot, resolving 50+ carrier disruptions daily and coordinating 250+ container moves. Built an AI-powered performance tracking tool using Amazon Bedrock. Previously saved $1M+ annually by eliminating bobtails through container-to-empty-move matching, and reduced LTL dwell time from 24+ hours to under 18 hours. Proven track record leading 50+ associates at Amazon's DTP7 delivery station, breaking operational records, and earning honors including Amazon Leader of the Month, RA of the Year, and Iowa State's prestigious Bronze Pin Award.</p>
 </div>
 
+<!-- Skills & Tools -->
+<div class="section skills-section">
+  <div class="section-header"><i class="fa-solid fa-wrench"></i><h2>Skills &amp; Tools</h2></div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <h4>Certification</h4>
+      <div class="skill-tags">
+        <span class="skill-tag highlight">Lean Six Sigma Green Belt</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <h4>Technical</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">Amazon Bedrock</span>
+        <span class="skill-tag">AI / Automation</span>
+        <span class="skill-tag">Amazon Logistics Tools (10+)</span>
+        <span class="skill-tag">Microsoft Excel</span>
+        <span class="skill-tag">Data Extraction &amp; Analysis</span>
+        <span class="skill-tag">SOP Development</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <h4>Domain Expertise</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">Supply Chain Optimization</span>
+        <span class="skill-tag">Intermodal Logistics</span>
+        <span class="skill-tag">Dedicated Carrier Mgmt</span>
+        <span class="skill-tag">Last-Mile Delivery</span>
+        <span class="skill-tag">Lean Operations</span>
+        <span class="skill-tag">DOT Compliance</span>
+        <span class="skill-tag">Cross-Functional Coordination</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Experience -->
 <div class="section">
   <div class="section-header"><i class="fa-solid fa-briefcase"></i><h2>Experience</h2></div>
   <div class="timeline">
+
     <div class="tcard">
       <div class="tcard-top">
-        <div><h3>Amazon</h3><div class="role">Logistics Coordinator IV — Dedicated Amazon Train</div></div>
+        <div><h3>Amazon</h3><div class="role">Immediate Contact Transportation Specialist (L4) — Dedicated Amazon Train</div></div>
         <span class="dates">Sep 2026 – Present</span>
       </div>
       <ul>
-        <li>Created a standard operating procedure for an hourly recurring process, improving team consistency</li>
-        <li>Built a data extraction program to track associate performance metrics used for end-of-year reviews</li>
-        <li>Work with dedicated carriers continuously, editing tours and VRIDs to accommodate rail hours and availability</li>
-        <li>Serve as the immediate point of contact for the Amazon Dedicated Train team, coordinating all container moves to and from the rail with a goal of filling a train with 250 AZNU containers daily</li>
+        <li>Manage $15K+ in daily freight ($3.75M annually) across 50+ dedicated VRIDs/loads as the sole point of contact for the Dedicated Train team</li>
+        <li>Resolve 50+ carrier disruptions daily: waybill corrections, billing issues, scheduling changes, and sourcing replacement loads for dedicated drivers</li>
+        <li>Built an AI-powered performance tracking tool using Amazon Bedrock and Excel to extract daily data for 10 team members, monitoring resolved disruptions by day and week</li>
+        <li>Created SOP for hourly FEMR-to-bobtail flip process — manually correcting system misclassifications — now used to train additional team members</li>
+        <li>Edit tours and VRIDs continuously to accommodate rail hours, carrier availability, and full-train targets of 250 AZNU containers daily</li>
         <li>Selected to join the pilot program after demonstrating strong performance across multiple Amazon logistics teams</li>
       </ul>
     </div>
+
     <div class="tcard">
       <div class="tcard-top">
-        <div><h3>Amazon</h3><div class="role">Logistics Coordinator IV — Account Support</div></div>
+        <div><h3>Amazon</h3><div class="role">Logistics Coordinator IV — External Account Support</div></div>
         <span class="dates">Aug 2026 – Sep 2026</span>
       </div>
       <ul>
-        <li>End-to-end support for external customers Best Buy, JC Penney, and Bridgestone</li>
-        <li>Managed all daily loads related to accounts, coordinating delivery and pickup stops with customers</li>
-        <li>Grew business relations with key accounts, leading to selection for the Dedicated Train pilot program</li>
+        <li>Provided end-to-end load support for Best Buy, JC Penney, and Bridgestone, coordinating daily delivery and pickup stops</li>
+        <li>Managed all daily loads related to accounts, strengthening business relationships with key external customers</li>
+        <li>Grew business relations with key accounts, leading to selection for the Dedicated Amazon Train pilot program</li>
       </ul>
     </div>
+
     <div class="tcard">
       <div class="tcard-top">
         <div><h3>Amazon</h3><div class="role">Logistics Coordinator — LTL Dwell Project</div></div>
         <span class="dates">Jun 2026 – Aug 2026</span>
       </div>
       <ul>
-        <li>Assisted the Less Than Truckload (LTL) team in resolving a backlog of delivery appointments and scheduling errors</li>
-        <li>Successfully cleared the backlog, leading to reassignment to the External Intermodal team</li>
+        <li>Reduced Less Than Truckload (LTL) dwell time from over 24 hours to under 18 hours within weeks of joining the project</li>
+        <li>Cleared a backlog of delivery appointments and scheduling errors, leading to reassignment to the External Intermodal team</li>
       </ul>
     </div>
+
     <div class="tcard">
       <div class="tcard-top">
-        <div><h3>Amazon</h3><div class="role">Logistics Coordinator IV</div></div>
+        <div><h3>Amazon</h3><div class="role">Logistics Coordinator IV — Bobtail Elimination Pilot (Amazon Freight Partners)</div></div>
         <span class="dates">Sep 2025 – May 2026</span>
       </div>
       <ul>
-        <li>Joined a 7-person pilot project team focused on minimizing bobtails on the road</li>
-        <li>Contributed to initiatives that saved over $1 million annually in operational costs</li>
+        <li>Mitigated bobtails by identifying dwelling containers ready for pickup and placing them on empty moves, ensuring drivers never ran empty</li>
+        <li>Every dwelling container matched to a bobtail saved Amazon Freight thousands of dollars per move</li>
+        <li>Contributed to a 7-person pilot team whose initiatives saved over $1 million annually in operational costs</li>
       </ul>
     </div>
+
     <div class="tcard">
       <div class="tcard-top">
         <div><h3>Amazon — DTP7 Delivery Station, Seffner, FL</h3><div class="role">Area Manager</div></div>
-        <span class="dates">Jul 2024 – Present</span>
+        <span class="dates">Jul 2024 – Sep 2025</span>
       </div>
       <ul>
-        <li>Managed and led the inbound dock team of over 50 warehouse associates daily</li>
+        <li>Managed and led the inbound dock team of 50+ warehouse associates daily</li>
         <li>Co-led QR code first pass yield pilot program, saving hundreds of labor hours monthly</li>
         <li>Broke building record for packages inducted in a single shift (Dec 9, 2024)</li>
-        <li>Successfully ran the operation lean (below required headcount), saving thousands in labor costs</li>
+        <li>Successfully ran operations lean (below required headcount), saving thousands in labor costs</li>
       </ul>
     </div>
+
     <div class="tcard">
       <div class="tcard-top">
         <div><h3>J.B. Hunt Transport Services, Inc., Rosemount, MN</h3><div class="role">Operations Intern</div></div>
@@ -569,11 +638,11 @@ a { color: var(--color-link, var(--color-primary)); }</style>
       </div>
       <ul>
         <li>Presented a trucking rollover prevention capstone project to senior-level management</li>
-        <li>Utilized logistics software to manage a fleet of 13 truck drivers daily</li>
-        <li>Strategically assigned driver routes to optimize drive time and on-time delivery</li>
+        <li>Managed a fleet of 13 truck drivers daily using logistics software; optimized route assignments for on-time delivery</li>
         <li>Identified 5+ DOT violations during fleet inspections, saving the site from extensive fines</li>
       </ul>
     </div>
+
     <div class="tcard">
       <div class="tcard-top">
         <div><h3>Iowa State University Housing Department, Ames, IA</h3><div class="role">Resident Assistant</div></div>
@@ -585,17 +654,24 @@ a { color: var(--color-link, var(--color-primary)); }</style>
         <li>Planned and hosted over 35 events over three years to encourage community in the hall</li>
       </ul>
     </div>
+
   </div>
 </div>
 
+<!-- Education -->
 <div class="section">
   <div class="section-header"><i class="fa-solid fa-graduation-cap"></i><h2>Education</h2></div>
   <div class="edu-card">
-    <div><h3>Iowa State University</h3><div class="major">Bachelor of Science — Supply Chain Management</div></div>
+    <div>
+      <h3>Iowa State University</h3>
+      <div class="major">Bachelor of Science — Supply Chain Management</div>
+      <div class="honors">Cum Laude</div>
+    </div>
     <span class="dates" style="font-size:12px;">Aug 2020 – May 2024</span>
   </div>
 </div>
 
+<!-- Awards -->
 <div class="section">
   <div class="section-header"><i class="fa-solid fa-trophy"></i><h2>Awards &amp; Honors</h2></div>
   <div class="awards-grid">
@@ -606,8 +682,10 @@ a { color: var(--color-link, var(--color-primary)); }</style>
   </div>
 </div>
 
+<!-- Involvement & Leadership -->
 <div class="section">
   <div class="section-header"><i class="fa-solid fa-users"></i><h2>Involvement &amp; Leadership</h2></div>
+
   <div class="involve-card">
     <h3>The Maintenance Shop, Student Union Board</h3>
     <div class="role-small">Director of Performing Arts</div>
@@ -617,6 +695,7 @@ a { color: var(--color-link, var(--color-primary)); }</style>
       <li>Volunteered at 50+ events including cinema, concerts, and stand-up comedy</li>
     </ul>
   </div>
+
   <div class="involve-card">
     <h3>National Residence Hall Honorary</h3>
     <div class="role-small">Founding Member</div>
@@ -626,6 +705,7 @@ a { color: var(--color-link, var(--color-primary)); }</style>
       <li>Helped to better recognize leaders across campus and improve community residence life</li>
     </ul>
   </div>
+
   <div class="involve-card">
     <h3>Ivy College of Business, Finance Club</h3>
     <div class="role-small">Vice President</div>
@@ -636,6 +716,7 @@ a { color: var(--color-link, var(--color-primary)); }</style>
       <li>Traveled to Minnesota and Texas to visit multiple Fortune 500 companies</li>
     </ul>
   </div>
+
 </div>
 
 </div>
@@ -645,13 +726,14 @@ a { color: var(--color-link, var(--color-primary)); }</style>
 </div>
 
 <script>
-  document.querySelectorAll('.tcard, .award, .involve-card, .edu-card').forEach((el, i) => {
+  document.querySelectorAll('.tcard, .award, .involve-card, .edu-card, .skill-card').forEach((el, i) => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(12px)';
     el.style.transition = 'opacity 0.4s ease-out, transform 0.4s ease-out';
     setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; }, 80 + i * 50);
   });
 </script>
+
 
 
 </body></html>
