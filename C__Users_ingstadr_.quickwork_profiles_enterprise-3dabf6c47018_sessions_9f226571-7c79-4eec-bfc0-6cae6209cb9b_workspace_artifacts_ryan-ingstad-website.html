@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html><head><style id="qw-theme">:root {
+  --color-bg: #f2f1f4;
+  --color-text: #352f3d;
+  --color-navbar-bg: #eae8ed;
+  --color-bg-chat-view: #fcfcfd;
+  --color-bg-secondary: #fff;
+  --color-bg-tertiary: #eae8ed;
+  --color-bg-hover: #dcdadf;
+  --color-surface: #eae8ed;
+  --color-surface-hover: #dcdadf;
+  --color-surface-active: #c1bec6;
+  --color-border: #c1bec6;
+  --color-border-light: #dcdadf;
+  --color-border-strong: #c1bec6;
+  --color-primary: #4200db;
+  --color-primary-dark: #35009e;
+  --color-primary-light: #8575ff;
+  --color-primary-bg: #e8e6ff;
+  --color-primary-hover-border: #35009e;
+  --color-nav-icon-active: #4200db;
+  --color-nav-hover-border: #4200db;
+  --color-primary-alpha-3: color-mix(in srgb, #4200db 3%, transparent);
+  --color-primary-alpha-5: color-mix(in srgb, #4200db 5%, transparent);
+  --color-primary-alpha-8: color-mix(in srgb, #4200db 8%, transparent);
+  --color-primary-alpha-12: color-mix(in srgb, #4200db 12%, transparent);
+  --color-primary-alpha-15: color-mix(in srgb, #4200db 15%, transparent);
+  --color-primary-alpha-20: color-mix(in srgb, #4200db 20%, transparent);
+  --color-primary-alpha-25: color-mix(in srgb, #4200db 25%, transparent);
+  --color-primary-alpha-30: color-mix(in srgb, #4200db 30%, transparent);
+  --color-primary-alpha-40: color-mix(in srgb, #4200db 40%, transparent);
+  --color-primary-alpha-50: color-mix(in srgb, #4200db 50%, transparent);
+  --color-primary-alpha-60: color-mix(in srgb, #4200db 60%, transparent);
+  --color-primary-subtle: color-mix(in srgb, #4200db 18%, transparent);
+  --color-primary-border: #8575ff;
+  --color-focus-ring: color-mix(in srgb, #4200db 50%, transparent);
+  --color-sidebar-hover: color-mix(in srgb, #4200db 12%, transparent);
+  --block-hover-outline: 1px dashed color-mix(in srgb, #4200db 50%, transparent);
+  --block-selected-outline: 1px solid #8575ff;
+  --block-selection-outline-offset: 2px;
+  --block-selected-halo: 0 0 8px color-mix(in srgb, #4200db 40%, transparent);
+  --color-accent: #4200db;
+  --color-accent-foreground: #4200db;
+  --color-accent-dark: #35009e;
+  --color-accent-light: #e8e6ff;
+  --color-accent-inverse: #fff;
+  --color-link: #4200db;
+  --color-primary-gradient-end: #e8e6ff;
+  --color-primary-bg-solid: #eae8ed;
+  --color-user-bubble: #f3f3f7;
+  --color-user-bubble-text: #352f3d;
+  --color-text-secondary: #5e5966;
+  --color-text-tertiary: #7a7582;
+  --color-text-muted: #938f9b;
+  --color-text-on-primary: #f2f1f4;
+  --color-success: #00802f;
+  --color-success-dark: #00471e;
+  --color-success-light: #d9ffd6;
+  --color-success-hover: #005c26;
+  --color-success-bg: #e6f4eb;
+  --color-success-border: #c4dccb;
+  --color-success-foreground: #00802f;
+  --color-success-dark-foreground: #00471e;
+  --color-success-text: #00471e;
+  --color-error: #db0000;
+  --color-error-dark: #700000;
+  --color-error-light: #ffe0e0;
+  --color-error-hover: #ffe0e0;
+  --color-error-bg: #fbe9ea;
+  --color-error-border: #eecbcd;
+  --color-error-active-border: #db0000;
+  --color-error-foreground: #db0000;
+  --color-error-dark-foreground: #700000;
+  --color-error-inverse: #fff;
+  --color-error-text: #700000;
+  --color-warning: #f2b100;
+  --color-warning-dark: #573a00;
+  --color-warning-light: #fffbbd;
+  --color-warning-hover: #db9200;
+  --color-warning-bg: #fdf6e4;
+  --color-warning-border: #f5dda6;
+  --color-warning-foreground: #f2b100;
+  --color-warning-dark-foreground: #573a00;
+  --color-warning-inverse: #573a00;
+  --color-surface-warning: #fffbbd;
+  --color-text-warning: #573a00;
+  --color-info: #006ce0;
+  --color-info-dark: #002a66;
+  --color-info-light: #d1f1ff;
+  --color-info-hover: #003b8f;
+  --color-info-bg: #e6f0fb;
+  --color-info-border: #c0d5ec;
+  --color-info-foreground: #006ce0;
+  --color-info-dark-foreground: #002a66;
+  --color-info-inverse: #fff;
+  --color-overlay: #dcdadf80;
+  --color-shadow: #352f3d40;
+  --color-hover: #352f3d0d;
+  --color-tooltip-bg: #eae8ed;
+  --color-tooltip-text: #352f3d;
+  --color-voice-purple: #8575ff;
+  --color-voice-purple-dark: #4200db;
+  --color-voice-purple-light: #8575ff;
+  --color-voice-red: #db0000;
+  --color-voice-red-dark: #700000;
+  --color-voice-amber: #f2b100;
+  --color-voice-purple-glow: #4200db66;
+  --color-voice-red-glow: #db000066;
+  --font-sans: "Amazon Ember", "Helvetica Neue", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: "SF Mono", "Monaco", "Menlo", "Consolas", monospace;
+  --text-2xs: .5625rem;
+  --text-xs: .625rem;
+  --text-sm: .6875rem;
+  --text-base: .75rem;
+  --text-md: .8125rem;
+  --text-lg: .875rem;
+  --text-xl: 1rem;
+  --text-2xl: 1.125rem;
+  --text-3xl: 1.25rem;
+  --text-4xl: 1.5rem;
+  --text-5xl: 2rem;
+  --spacing-1: calc(.25rem * 1);
+  --spacing-1-5: calc(.25rem * 1.5);
+  --spacing-2: calc(.25rem * 2);
+  --spacing-3: calc(.25rem * 3);
+  --spacing-4: calc(.25rem * 4);
+  --spacing-5: calc(.25rem * 5);
+  --spacing-6: calc(.25rem * 6);
+  --spacing-7: calc(.25rem * 7);
+  --spacing-8: calc(.25rem * 8);
+  --spacing-9: calc(.25rem * 9);
+  --spacing-10: calc(.25rem * 10);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-card: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 8px;
+  --shadow-sm: 0 1px 2px #352f3d0f;
+  --shadow-md: 0 4px 12px #352f3d1a;
+  --color-success-bg-solid: #d9ffd6;
+  --color-error-bg-solid: #ffe0e0;
+  --color-error-border-solid: #ffe0e0;
+  --color-warning-bg-solid: #fffbbd;
+  --color-warning-text: #573a00;
+  --color-info-bg-solid: #d1f1ff;
+  --color-info-bg-solid-alt: #d1f1ff;
+  --color-info-text: #002a66;
+  --color-info-text-alt: #002a66;
+  --color-emerald: #367c53;
+  --color-teal: #0c9aa7;
+  --color-code-bg: #eae8ed;
+  --color-code-header-bg: #dcdadf;
+  --color-code-text: #352f3d;
+  --color-code-border: #c1bec6;
+  --color-code-muted: #5e5966;
+  --color-inline-code-bg: #eae8ed;
+  --color-inline-code-text: #352f3d;
+  --color-inline-code-border: #c1bec6;
+  --color-scrollbar-thumb: #c1bec6;
+  --color-scrollbar-track: transparent;
+  --color-graph-node-text: #352f3d;
+  --color-graph-node-text-dim: #938f9b;
+  --color-graph-edge-default: #938f9b;
+  --color-graph-edge-cross: #d08025;
+  --color-graph-edge-text: #5e5966;
+  --color-graph-edge-stroke: #f2f1f4;
+  --color-graph-highlight-bg: #ff6b6b;
+  --color-graph-highlight-border: #e74c3c;
+  --color-graph-search-bg: gold;
+  --color-graph-search-border: orange;
+  --color-graph-focus-border: #c0392b;
+  --color-graph-external-border: #938f9b;
+  --color-graph-cat-file: #3878b0;
+  --color-graph-cat-folder: #5e5966;
+  --color-graph-cat-file-aggregate: #2d6a9f;
+  --color-graph-cat-class: #7138cc;
+  --color-graph-cat-function: #367c53;
+  --color-graph-cat-method: #0c9aa7;
+  --color-graph-cat-variable: #d08025;
+  --color-graph-cat-import: #b06a1a;
+  --color-graph-cat-module: #5e35a8;
+  --color-graph-cat-concept: #933;
+  --color-graph-cat-person: #c44d4d;
+  --color-graph-cat-org: #0c9aa7;
+  --color-graph-cat-organization: #0c9aa7;
+  --color-graph-cat-product: #8e47ff;
+  --color-graph-cat-metric: #c44d78;
+  --color-graph-cat-location: #34495e;
+  --color-graph-cat-date: #b34d8a;
+  --color-graph-cat-code: #3878b0;
+  --color-graph-cat-doc: #5e5966;
+  --color-graph-cat-url: #367c53;
+  --color-graph-cat-email: #5e35a8;
+  --color-graph-cat-unknown: #938f9b;
+  --color-graph-rel-contains: #938f9b;
+  --color-graph-rel-extends: #7138cc;
+  --color-graph-rel-implements: #3878b0;
+  --color-graph-rel-imports: #d08025;
+  --color-graph-rel-uses: #367c53;
+  --color-graph-rel-calls: #367c53;
+  --color-graph-rel-references: #d08025;
+  --color-graph-rel-related-to: #938f9b;
+  --color-graph-rel-works-on: #933;
+  --color-graph-rel-owns: #0c9aa7;
+  --color-graph-rel-depends-on: #b06a1a;
+  --color-graph-rel-parent-of: #938f9b;
+  --qs-content: #fff;
+  --qs-main: #fff;
+  --qs-primary-foreground: #131920;
+  --qs-secondary-foreground: #656871;
+  --qs-tertiary-foreground: #938f9b;
+  --qs-placeholder-foreground: #8c8c94;
+  --qs-divider: #dedee3;
+  --qs-default-border: #8c8c94;
+  --qs-neutral-soft: #b4b4bb;
+  --qs-neutral-gray-50: #eae8ed;
+  --qs-tertiary-background: #eae8ed;
+  --qs-action-hover: #f3f3f7;
+  --qs-primary-default: #4200db;
+  --qs-primary-dark: #35009e;
+  --qs-primary-light: #e8e6ff;
+  --qs-success-default: #00802f;
+  --qs-error-default: #db0000;
+  --qs-font-sans: "Amazon Ember", "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif;
+  --safe-top: 0px;
+  --safe-bottom: 0px;
+  --safe-left: 0px;
+  --safe-right: 0px;
+  --qs-font-family: "Amazon Ember", "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif;
+  --qs-font-base-letter-spacing: .15px;
+  --qs-shadow-sm: 0 0 2px 0 #00000029, 0 0 4px 0 #00000029;
+  --qs-shadow-md: 0 0 2px 0 #00000029, 0 2px 8px 1px #00000029;
+  --qs-shadow-lg: 0 4px 16px 4px #00000029, 0 2px 6px 1px #00000029;
+  --qs-shadow-xl: 0 4px 8px 2px #00000029, 0 6px 20px 4px #00000029;
+  --qs-width-modal-sm: 384px;
+  --qs-width-modal-md: 600px;
+  --qs-width-modal-lg: 1136px;
+  --qs-grid-gap: 16px;
+  --qs-grid-gap-xl: 24px;
+  --qs-primary-medium: #8575ff;
+  --qs-primary-inverse: #fff;
+  --qs-neutral-lightest: #f9f9fb;
+  --qs-neutral-light: #f3f3f7;
+  --qs-neutral-default: #dedee3;
+  --qs-neutral-medium: #8c8c94;
+  --qs-neutral-deep: #656871;
+  --qs-neutral-dark: #333843;
+  --qs-neutral-strong: #131920;
+  --qs-neutral-white: #fff;
+  --qs-neutral-black: #000;
+  --qs-success-medium: #005c26;
+  --qs-success-dark: #00471e;
+  --qs-success-light: #d9ffd6;
+  --qs-success-inverse: #fff;
+  --qs-info-default: #006ce0;
+  --qs-info-medium: #003b8f;
+  --qs-info-dark: #002a66;
+  --qs-info-light: #d1f1ff;
+  --qs-info-inverse: #fff;
+  --qs-warning-default: #f2b100;
+  --qs-warning-medium: #db9200;
+  --qs-warning-dark: #573a00;
+  --qs-warning-light: #fffbbd;
+  --qs-warning-inverse: #573a00;
+  --qs-warning-experimental: #f2b100;
+  --qs-warning-experimental-light: #fffbbd;
+  --qs-warning-experimental-light-foreground: #fffbbd;
+  --qs-error-medium: #900;
+  --qs-error-dark: #700000;
+  --qs-error-light: #ffe0e0;
+  --qs-error-inverse: #fff;
+  --qs-connection-default: #db3300;
+  --qs-connection-soft: #ff997a;
+  --qs-connection-light: #ffe0d6;
+  --qs-connection-dark: #661800;
+  --qs-automation-default: #b3008f;
+  --qs-automation-medium: #d600ba;
+  --qs-automation-soft: #ff94f1;
+  --qs-automation-light: #ffe0fb;
+  --qs-automation-dark: #660052;
+  --qs-insight-default: #a000b8;
+  --qs-insight-soft: #f299ff;
+  --qs-insight-light: #fce6ff;
+  --qs-insight-dark: #590066;
+  --qs-visualization-default: #7300e5;
+  --qs-visualization-soft: #d4a8ff;
+  --qs-visualization-light: #f2e5ff;
+  --qs-visualization-dark: #45008a;
+  --qs-spice: #ff9800;
+  --qs-coachmark: #006ce0;
+  --qs-brand: #fff;
+  --qs-brand-foreground: #131920;
+  --qs-brand-navbar: #131920;
+  --qs-brand-navbar-foreground: #fff;
+  --qs-brand-navbar-light: #dedee3;
+  --qs-brand-navbar-dark: #000;
+  --qs-application-navbar: #4200db;
+  --qs-application-navbar-foreground: #fff;
+  --qs-application-navbar-light: #e8e6ff;
+  --qs-application-navbar-dark: #35009e;
+  --qs-dimension: #4200db;
+  --qs-dimension-foreground: #fff;
+  --qs-dimension-experimental: #4200db;
+  --qs-dimension-experimental-foreground: #4200db;
+  --qs-measure: #00802f;
+  --qs-measure-foreground: #fff;
+  --qs-measure-experimental: #f2b100;
+  --qs-measure-experimental-foreground: #f2b100;
+  --qs-content-inverse: #333843;
+  --qs-content-inverse-active: #131920;
+  --qs-secondary: #dedee3;
+  --qs-disabled: #8c8c94;
+  --qs-divider-light: #f3f3f7;
+  --qs-hover-border: #333843;
+  --qs-active-border: #4200db;
+  --qs-disabled-border: #dedee3;
+  --qs-error-border: #ffe0e0;
+  --qs-error-active-border: #db0000;
+  --qs-disabled-foreground: #b4b4bb;
+  --qs-primary-inverse-foreground: #fff;
+  --qs-error-foreground: #db0000;
+  --qs-contrast-foreground: #131920;
+  --qs-main-foreground: #131920;
+  --qs-main-secondary-foreground: #656871;
+  --qs-action-disabled: #f3f3f7;
+  --qs-action-active: #e8e6ff;
+  --qs-default-badge: #dedee3;
+  --qs-tag-default: #dedee3;
+  --qs-tag-soft-border: #b4b4bb;
+  --qs-focus-offset: 1px;
+  --qs-toggle-tile-sm: calc(.25rem * 8);
+  --qs-toggle-tile-md: calc(.25rem * 12);
+  --qs-toggle-tile-lg: calc(.25rem * 15);
+  --qs-shadow-pin-right: inset 4px 0 4px -4px #00000029;
+  --qs-shadow-pin-left: inset -4px 0 4px -4px #00000029;
+  --react-pdf-text-layer: 1;
+  --highlight-bg-color: #b400aa;
+  --highlight-selected-bg-color: #006400;
+  --react-pdf-annotation-layer: 1;
+  --annotation-unfocused-field-background: url("data:image/svg+xml;charset=UTF-8,<svg width='1px' height='1px' xmlns='http://www.w3.org/2000/svg'><rect width='100%' height='100%' style='fill:rgba(0, 54, 255, 0.13);'/></svg>");
+  --input-focus-border-color: Highlight;
+  --input-focus-outline: 1px solid Canvas;
+  --input-unfocused-border-color: transparent;
+  --input-disabled-border-color: transparent;
+  --input-hover-border-color: black;
+  --link-outline: none;
+  color-scheme: light;
+}
+body { background: var(--color-bg); color: var(--color-text); }
+a { color: var(--color-link, var(--color-primary)); }</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ryan Ingstad — Supply Chain &amp; Logistics Professional</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  :root {
+    --color-bg: #ffffff;
+    --color-bg-secondary: #f8fafc;
+    --color-text: #1e293b;
+    --color-text-secondary: #475569;
+    --color-text-muted: #94a3b8;
+    --color-border-light: #e2e8f0;
+    --color-border: #cbd5e1;
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'SF Mono', 'Fira Code', monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--color-bg);
+    font-family: var(--font-sans);
+    color: var(--color-text);
+    line-height: 1.6;
+  }
+  .hero {
+    background: linear-gradient(135deg, #0a1628 0%, #1a3a5c 50%, #0d2b4a 100%);
+    color: #ffffff;
+    padding: 64px 32px 56px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 30% 40%, rgba(59,130,246,0.15) 0%, transparent 60%),
+                radial-gradient(circle at 70% 60%, rgba(16,185,129,0.10) 0%, transparent 50%);
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+  .hero-initials {
+    width: 88px; height: 88px; border-radius: 50%;
+    background: linear-gradient(135deg, #3b82f6, #10b981);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 32px; font-weight: 700; color: #fff;
+    margin-bottom: 20px; letter-spacing: 1px;
+  }
+  .hero h1 { font-size: 36px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.5px; }
+  .hero .subtitle { font-size: 17px; color: rgba(255,255,255,0.75); margin-bottom: 20px; font-weight: 400; }
+  .hero-links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .hero-links a {
+    color: rgba(255,255,255,0.85); font-size: 14px; text-decoration: none;
+    display: flex; align-items: center; gap: 6px; transition: color 0.15s;
+  }
+  .hero-links a:hover { color: #fff; }
+  .container { max-width: 840px; margin: 0 auto; padding: 0 24px; }
+  .bio { padding: 40px 0 32px; }
+  .bio p {
+    font-size: 15px; color: var(--color-text-secondary); line-height: 1.75;
+    text-align: center; max-width: 720px; margin: 0 auto;
+  }
+  .section { padding: 24px 0 32px; }
+  .section-header {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 24px; padding-bottom: 10px;
+    border-bottom: 2px solid var(--color-border-light);
+  }
+  .section-header i { color: #3b82f6; font-size: 18px; }
+  .section-header h2 { font-size: 20px; font-weight: 700; color: var(--color-text); letter-spacing: -0.3px; }
+  .timeline { display: flex; flex-direction: column; gap: 20px; }
+  .tcard {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border-light);
+    border-radius: 10px;
+    padding: 22px 24px;
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+  .tcard:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); border-color: var(--color-border); }
+  .tcard-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; margin-bottom: 6px; }
+  .tcard h3 { font-size: 16px; font-weight: 600; color: var(--color-text); }
+  .tcard .role { font-size: 14px; color: #3b82f6; font-weight: 500; margin-bottom: 4px; }
+  .tcard .dates {
+    font-size: 12px; color: var(--color-text-muted); font-family: var(--font-mono);
+    background: rgba(0,0,0,0.04); padding: 3px 10px; border-radius: 100px; white-space: nowrap;
+  }
+  .tcard ul { margin-top: 10px; padding-left: 18px; }
+  .tcard li { font-size: 14px; color: var(--color-text-secondary); margin-bottom: 6px; line-height: 1.55; }
+  .edu-card {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border-light);
+    border-radius: 10px;
+    padding: 22px 24px;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+  }
+  .edu-card h3 { font-size: 16px; font-weight: 600; }
+  .edu-card .major { font-size: 14px; color: var(--color-text-secondary); }
+  .awards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+  .award {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border-light);
+    border-radius: 10px;
+    padding: 18px 20px;
+    transition: box-shadow 0.2s;
+  }
+  .award:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+  .award-icon { font-size: 22px; margin-bottom: 8px; }
+  .award h4 { font-size: 14px; font-weight: 600; color: var(--color-text); margin-bottom: 4px; }
+  .award p { font-size: 12px; color: var(--color-text-muted); line-height: 1.5; }
+  .involve-card {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border-light);
+    border-radius: 10px;
+    padding: 20px 24px;
+  }
+  .involve-card + .involve-card { margin-top: 14px; }
+  .involve-card h3 { font-size: 15px; font-weight: 600; }
+  .involve-card .role-small { font-size: 13px; color: #3b82f6; font-weight: 500; }
+  .involve-card .dates-small { font-size: 12px; color: var(--color-text-muted); font-family: var(--font-mono); margin-bottom: 6px; }
+  .involve-card li { font-size: 13px; color: var(--color-text-secondary); margin-bottom: 4px; line-height: 1.5; }
+  .footer {
+    text-align: center; padding: 40px 24px 32px;
+    font-size: 13px; color: var(--color-text-muted);
+    border-top: 1px solid var(--color-border-light);
+    margin-top: 16px;
+  }
+  .footer a { color: #3b82f6; text-decoration: none; }
+
+  @media (max-width: 600px) {
+    .hero { padding: 48px 20px 40px; }
+    .hero h1 { font-size: 28px; }
+    .tcard-top { flex-direction: column; }
+    .edu-card { flex-direction: column; align-items: flex-start; }
+    .awards-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-initials">RI</div>
+    <h1>Ryan Ingstad</h1>
+    <div class="subtitle">Supply Chain &amp; Logistics Professional</div>
+    <div class="hero-links">
+      <a href="mailto:ingstadr@gmail.com"><i class="fa-solid fa-envelope"></i> ingstadr@gmail.com</a>
+      <a href="tel:9525673501"><i class="fa-solid fa-phone"></i> (952) 567-3501</a>
+      <a href="https://linkedin.com/in/ryaningstad/" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+<div class="bio">
+  <p>Results-driven Supply Chain Professional with a B.S. in Supply Chain Management from Iowa State University and hands-on expertise applying Lean principles to optimize high-volume distribution operations. Proven track record leading 50+ associates at Amazon's DTP7 delivery station, driving efficiency gains, and breaking operational records. Recognized for leadership excellence with honors including Amazon Leader of the Month, RA of the Year, and Iowa State's prestigious Bronze Pin Award. Currently coordinating dedicated logistics operations at J.B. Hunt, building on a foundation of fleet management, DOT compliance, and data-driven process improvement.</p>
+</div>
+
+<div class="section">
+  <div class="section-header"><i class="fa-solid fa-briefcase"></i><h2>Experience</h2></div>
+  <div class="timeline">
+    <div class="tcard">
+      <div class="tcard-top">
+        <div><h3>J.B. Hunt Transport Services, Inc.</h3><div class="role">Logistics Coordinator IV — Dedicated Amazon Train</div></div>
+        <span class="dates">Sep 2026 – Present</span>
+      </div>
+      <ul>
+        <li>Created a standard operating procedure for an hourly recurring process, improving team consistency</li>
+        <li>Built a data extraction program to track associate performance metrics used for end-of-year reviews</li>
+        <li>Work with dedicated carriers continuously, editing tours and VRIDs to accommodate rail hours and availability</li>
+      </ul>
+    </div>
+    <div class="tcard">
+      <div class="tcard-top">
+        <div><h3>J.B. Hunt Transport Services, Inc.</h3><div class="role">Logistics Coordinator IV — Account Support</div></div>
+        <span class="dates">Aug 2026 – Sep 2026</span>
+      </div>
+      <ul>
+        <li>End-to-end support for external customers Best Buy, JC Penney, and Bridgestone</li>
+        <li>Managed all daily loads related to accounts, coordinating delivery and pickup stops with customers</li>
+      </ul>
+    </div>
+    <div class="tcard">
+      <div class="tcard-top">
+        <div><h3>J.B. Hunt Transport Services, Inc.</h3><div class="role">Logistics Coordinator — LTL Dwell Project</div></div>
+        <span class="dates">Jun 2026 – Aug 2026</span>
+      </div>
+      <ul><li>Coordinated logistics for a dedicated LTL dwell reduction project</li></ul>
+    </div>
+    <div class="tcard">
+      <div class="tcard-top">
+        <div><h3>J.B. Hunt Transport Services, Inc.</h3><div class="role">Logistics Coordinator IV</div></div>
+        <span class="dates">Sep 2025 – May 2026</span>
+      </div>
+      <ul><li>Managed logistics coordination across supply chain operations</li></ul>
+    </div>
+    <div class="tcard">
+      <div class="tcard-top">
+        <div><h3>Amazon — DTP7 Delivery Station, Seffner, FL</h3><div class="role">Area Manager</div></div>
+        <span class="dates">Jul 2024 – Present</span>
+      </div>
+      <ul>
+        <li>Managed and led the inbound dock team of over 50 warehouse associates daily</li>
+        <li>Co-led QR code first pass yield pilot program, saving hundreds of labor hours monthly</li>
+        <li>Broke building record for packages inducted in a single shift (Dec 9, 2024)</li>
+        <li>Successfully ran the operation lean (below required headcount), saving thousands in labor costs</li>
+      </ul>
+    </div>
+    <div class="tcard">
+      <div class="tcard-top">
+        <div><h3>J.B. Hunt Transport Services, Inc., Rosemount, MN</h3><div class="role">Operations Intern</div></div>
+        <span class="dates">May 2023 – Aug 2023</span>
+      </div>
+      <ul>
+        <li>Presented a trucking rollover prevention capstone project to senior-level management</li>
+        <li>Utilized logistics software to manage a fleet of 13 truck drivers daily</li>
+        <li>Strategically assigned driver routes to optimize drive time and on-time delivery</li>
+        <li>Identified 5+ DOT violations during fleet inspections, saving the site from extensive fines</li>
+      </ul>
+    </div>
+    <div class="tcard">
+      <div class="tcard-top">
+        <div><h3>Iowa State University Housing Department, Ames, IA</h3><div class="role">Resident Assistant</div></div>
+        <span class="dates">Jul 2021 – May 2024</span>
+      </div>
+      <ul>
+        <li>Created an inclusive community in a diverse environment to ensure residents felt valued</li>
+        <li>Led and mentored groups of 50+ students in a residence hall</li>
+        <li>Planned and hosted over 35 events over three years to encourage community in the hall</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-header"><i class="fa-solid fa-graduation-cap"></i><h2>Education</h2></div>
+  <div class="edu-card">
+    <div><h3>Iowa State University</h3><div class="major">Bachelor of Science — Supply Chain Management</div></div>
+    <span class="dates" style="font-size:12px;">Aug 2020 – May 2024</span>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-header"><i class="fa-solid fa-trophy"></i><h2>Awards &amp; Honors</h2></div>
+  <div class="awards-grid">
+    <div class="award"><div class="award-icon">🏆</div><h4>Leader of the Month</h4><p>Amazon DTP7 — April 2025</p></div>
+    <div class="award"><div class="award-icon">🥉</div><h4>Bronze Pin Award</h4><p>Highest award for on-campus leaders, Iowa State University — May 2023</p></div>
+    <div class="award"><div class="award-icon">⭐</div><h4>Resident Assistant of the Year</h4><p>Chosen from 140+ RAs, IRHA Awards Banquet — May 2023</p></div>
+    <div class="award"><div class="award-icon">🙌</div><h4>"Most Likely to Step Up"</h4><p>National Residence Hall Honorary Awards Banquet — May 2023</p></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-header"><i class="fa-solid fa-users"></i><h2>Involvement &amp; Leadership</h2></div>
+  <div class="involve-card">
+    <h3>The Maintenance Shop, Student Union Board</h3>
+    <div class="role-small">Director of Performing Arts</div>
+    <div class="dates-small">Jan 2022 – Jan 2024</div>
+    <ul style="padding-left:18px;">
+      <li>Elected Director of Performing Arts, hosting 50+ university-wide events</li>
+      <li>Volunteered at 50+ events including cinema, concerts, and stand-up comedy</li>
+    </ul>
+  </div>
+  <div class="involve-card">
+    <h3>National Residence Hall Honorary</h3>
+    <div class="role-small">Founding Member</div>
+    <div class="dates-small">Aug 2022 – May 2024</div>
+    <ul style="padding-left:18px;">
+      <li>Accepted into the top 1% of all student leaders at Iowa State University</li>
+      <li>Helped to better recognize leaders across campus and improve community residence life</li>
+    </ul>
+  </div>
+  <div class="involve-card">
+    <h3>Ivy College of Business, Finance Club</h3>
+    <div class="role-small">Vice President</div>
+    <div class="dates-small">Jan 2022 – Jan 2023</div>
+    <ul style="padding-left:18px;">
+      <li>Elected Vice President for multiple semesters of one of the largest academic clubs on campus</li>
+      <li>Appointed Vice Treasurer — created, managed, and adjusted financial budgets</li>
+      <li>Traveled to Minnesota and Texas to visit multiple Fortune 500 companies</li>
+    </ul>
+  </div>
+</div>
+
+</div>
+
+<div class="footer">
+  <p>© 2026 Ryan Ingstad · <a href="mailto:ingstadr@gmail.com">ingstadr@gmail.com</a> · <a href="https://linkedin.com/in/ryaningstad/" target="_blank">LinkedIn</a></p>
+</div>
+
+<script>
+  document.querySelectorAll('.tcard, .award, .involve-card, .edu-card').forEach((el, i) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(12px)';
+    el.style.transition = 'opacity 0.4s ease-out, transform 0.4s ease-out';
+    setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; }, 80 + i * 50);
+  });
+</script>
+
+
+</body></html>
